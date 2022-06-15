@@ -14,18 +14,18 @@ jobs:
       - run: docker build -t baresz/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true baresz/react-test npm test
          
-  #    - run: docker build -t baresz/multi-client-10-14 #./client
-  #    - run: docker build -t baresz/multi-nginx-10-14  #./nginx
-  #    - run: docker build -t baresz/multi-server-10-14 #./server
-  #    - run: docker build -t baresz/multi-worker-10-14 #./worker
- #
-  #    - run: docker push baresz/multi-client-10-14
-  #    - run: docker push baresz/multi-nginx-10-14
-  #    - run: docker push baresz/multi-server-10-14
-  #    - run: docker push baresz/multi-worker-10-14
- #
-  #    - name: Generate deployment package
-  #      run: zip -r deploy.zip . -x '*.git*'
+      - run: docker build -t baresz/multi-client-10-14 #./client
+      - run: docker build -t baresz/multi-nginx-10-14  #./nginx
+      - run: docker build -t baresz/multi-server-10-14 #./server
+      - run: docker build -t baresz/multi-worker-10-14 #./worker
+ 
+      - run: docker push baresz/multi-client-10-14
+      - run: docker push baresz/multi-nginx-10-14
+      - run: docker push baresz/multi-server-10-14
+      - run: docker push baresz/multi-worker-10-14
+ 
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
  
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v18
@@ -37,4 +37,4 @@ jobs:
           existing_bucket_name: elasticbeanstalk-eu-north-1-960564264258
           region: eu-north-1
           version_label: ${{ github.sha }}
-       #   deployment_package: deploy.zip
+          deployment_package: deploy.zip
