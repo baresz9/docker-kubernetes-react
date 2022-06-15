@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          testing2
+          Nezd Petra mukszik az appom AWS-en :)
         </p>
         <a
           className="App-link"
