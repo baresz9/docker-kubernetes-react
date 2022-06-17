@@ -8,4 +8,5 @@ RUN npm run build
 #---- idáig -> ez csak temporary, felhasználjuk ami a build után történik
 
 FROM nginx as runner
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
